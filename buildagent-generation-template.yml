@@ -1,3 +1,6 @@
+trigger:
+- '*'
+
 parameters:
 - name: image_type
   displayName: Build Agent Image
