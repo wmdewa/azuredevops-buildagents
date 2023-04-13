@@ -60,7 +60,7 @@ jobs:
     inputs:
       targetType: 'inline'
       script: |
-        $ResourcesNamePrefix = "$(Build.BuildId)"
+        $ResourcesNamePrefix = "RG_Ward.Marchand"
         $ImageType = "${{ parameters.image_type }}"
         $TemplateDirectoryName = if ($ImageType.StartsWith("ubuntu")) { "linux" } else { "win" }
         $OsType = if ($ImageType.StartsWith("ubuntu")) { "Linux" } else { "Windows" }
