@@ -18,7 +18,7 @@ parameters:
 - name: agent_pool
   displayName: Agent Pool
   type: string
-  default: CI Windows2019
+  default: ScaleSetMicrosoftImage
 - name: depends_on
   displayName: First Job Depends On
   type: object
