@@ -20,7 +20,7 @@ if (-not (Test-Path $TemplatePath))
 }
 
 $Image = [io.path]::GetFileName($TemplatePath).Split(".")[0]
-$TempResourceGroupName = ""RG_Ward.Marchand""
+$TempResourceGroupName = "RG_Ward.Marchand"
 $InstallPassword = [System.GUID]::NewGuid().ToString().ToUpper()
 
 packer validate -syntax-only $TemplatePath
