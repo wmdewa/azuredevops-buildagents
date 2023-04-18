@@ -5,7 +5,7 @@ parameters:
 - name: image_type
   displayName: Build Agent Image
   type: string
-  default: windows2019
+  default: windows2022
   values:
   - windows2019
   - windows2022
@@ -126,20 +126,6 @@ jobs:
       arguments: -PackerLogPath "$(Build.ArtifactStagingDirectory)/packer-log.txt" `
                         -PrefixToPathTrim "$(TemplateDirectoryPath)" `
                         -PrintTopNLongest 25
-
-  - task: PowerShell@2
-    displayName: 'Clean up resources'
-    condition: always()
-    inputs:
-      targetType: filePath
-      filePath: ${{ parameters.repository_base_path }}/scripts/cleanup.ps1
-      arguments: -ResourcesNamePrefix $(setVars.ResourcesNamePrefix) `
-                     -ClientId $(CLIENT_ID) `
-                     -ClientSecret $(CLIENT_SECRET) `
-                     -Image $(setVars.ImageType) `
-                     -SubscriptionId $(AZURE_SUBSCRIPTION) `
-                     -TenantId $(AZURE_TENANT) `
-                     -StorageAccount $(AZURE_STORAGE_ACCOUNT)
 
 - job: managedimagegeneration
   displayName: Managed Image Generation (${{ parameters.image_type }})
