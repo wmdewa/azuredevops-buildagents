@@ -55,6 +55,17 @@ jobs:
     displayName: 'Clone the GitHub repository'
 
   - task: PowerShell@2
+    displayName: 'Workaround for issue: https://github.com/actions/runner-images/discussions/6251'
+    inputs:
+      targetType: 'inline'
+      script: |        
+        $TemplateFile = "./runner-images/images/win/${{ parameters.image_type }}.json"
+        Write-Host 'Attempting to modify $TemplateFile with workaround'
+        ((Get-Content -path $TemplateFile -Raw) -replace '"type": "azure-arm",','"type": "azure-arm","azure_tags": { "ExcludeMdeAutoProvisioning": "True" },') | Set-Content -Path $TemplateFile               
+        Write-Host "$TemplateFile modified"
+        Get-Content -path $TemplateFile -Raw
+
+  - task: PowerShell@2
     name: setVars
     displayName: 'Set image template variables'
     inputs:
