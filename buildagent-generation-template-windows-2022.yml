@@ -3,11 +3,6 @@ parameters:
   displayName: Build Agent Image
   type: string
   default: windows2022
-  values:
-  - windows2019
-  - windows2022
-  - ubuntu2004
-  - ubuntu2204
 - name: variable_group
   displayName: Variable Group
   type: string
