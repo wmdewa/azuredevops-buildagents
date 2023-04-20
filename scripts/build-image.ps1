@@ -52,7 +52,7 @@ packer build    -var "capture_name_prefix=$ResourcesNamePrefix" `
                 -var "virtual_network_subnet_name=$VirtualNetworkSubnet" `
                 -var "run_validation_diskspace=$env:RUN_VALIDATION_FLAG" `
                 -var "build_resource_group_name=RG_Ward.Marchand" `
-                -var "vm_size=DS2_v2" `
+                -var "vm_size=B2s" `
                 -color=false `
                 $TemplatePath `
         | Foreach-Object { 
